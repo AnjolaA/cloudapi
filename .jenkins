@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Test and Build Docker Image') {
+            steps {
+                echo 'Building Docker Image'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Terraform Plan and Apply'
+            }
+        }
+        stage('API Testing') {
+            steps {
+                echo 'Running Tests on Endopints.'
+            }
+        }
+    }
+}
