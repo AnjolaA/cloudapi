@@ -10,7 +10,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Terraform Plan and Apply'
-                sh terraform --version
+                sh 'echo Starting'
+                sh 'terraform --version'
 
             }
         }
