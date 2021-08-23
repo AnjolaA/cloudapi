@@ -9,11 +9,9 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                container('terraform') {
                     echo 'Terraform Plan and Apply'
                     sh 'echo Starting'
                     sh 'terraform --version'
-                }
             }
         }
         stage('API Testing') {
