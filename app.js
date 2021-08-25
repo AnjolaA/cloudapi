@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-const PORT = 3000;
+const PORT = 80;
 const HOST = "0.0.0.0";
 
 app.get("/", function (req, res) {
