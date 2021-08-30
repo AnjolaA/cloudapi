@@ -1,25 +1,27 @@
 const express = require("express");
 const app = express();
-const bodyParser = require("body-parser");
+
+const { initialize } = require("express-openapi");
+const v1ApiDoc = require("./api/doc");
+const swaggerUi = require("swagger-ui-express");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-const PORT = 80;
-const HOST = "0.0.0.0";
-
-app.get("/", function (req, res) {
-  res.send("hello world");
+initialize({
+  app,
+  apiDoc: v1ApiDoc,
+  paths: "./api/paths",
 });
 
-app.get("/get", function (req, res) {
-  res.send("My name is Jack");
-});
-
-app.post("/create", function (req, res, next) {
-  if (req.body.name != null) {
-    res.send(`My name is ${req.body.name}`);
-  }
-});
-app.listen(PORT, HOST);
-console.log(`Running on http://${HOST}:${PORT}`);
+// OPEN API
+app.use(
+  "/api-documentation",
+  swaggerUi.serve,
+  swaggerUi.setup(null, {
+    swaggerOptions: {
+      url: "http://localhost:80/api-docs",
+    },
+  })
+);
+app.listen(80);

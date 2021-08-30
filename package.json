@@ -2,7 +2,8 @@
   "name": "cloudapi",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",  "scripts": {
+  "main": "app.js",
+  "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "./node_modules/.bin/nodemon app.js",
     "start": "node app.js"
@@ -12,6 +13,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "nodemon": "^2.0.12"
+    "express-openapi": "^9.2.0",
+    "nodemon": "^2.0.12",
+    "swagger-ui-express": "^4.1.6"
   }
 }
